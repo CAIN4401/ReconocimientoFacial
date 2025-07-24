@@ -1,0 +1,87 @@
+ScreenManager:
+    RegistroScreen:
+    LoginScreen:
+    UsuariosScreen:
+
+<RegistroScreen>:
+    name: 'registro'
+    MDBoxLayout:
+        orientation: 'vertical'
+        padding: 30
+        spacing: 20
+
+        MDLabel:
+            text: 'Registro con Reconocimiento Facial'
+            halign: 'center'
+            font_style: 'H5'
+
+        MDTextField:
+            id: reg_usuario
+            hint_text: 'Usuario'
+
+        MDTextField:
+            id: reg_contrasena
+            hint_text: 'Contraseña'
+            password: True
+
+        MDRaisedButton:
+            text: 'Registrar y Capturar Rostro'
+            on_release:
+                root.registrar_usuario()
+
+        MDTextButton:
+            text: '¿Ya tienes cuenta? Inicia sesión'
+            on_release:
+                app.root.current = 'login'
+
+<LoginScreen>:
+    name: 'login'
+    MDBoxLayout:
+        orientation: 'vertical'
+        padding: 30
+        spacing: 20
+
+        MDLabel:
+            text: 'Inicio de Sesión con Verificación Facial'
+            halign: 'center'
+            font_style: 'H5'
+
+        MDTextField:
+            id: login_usuario
+            hint_text: 'Usuario'
+
+        MDTextField:
+            id: login_contrasena
+            hint_text: 'Contraseña'
+            password: True
+
+        MDRaisedButton:
+            text: 'Iniciar Sesión'
+            on_release:
+                root.iniciar_sesion()
+
+        MDTextButton:
+            text: '¿No tienes cuenta? Regístrate'
+            on_release:
+                app.root.current = 'registro'
+
+<UsuariosScreen>:
+    name: 'usuarios'
+    MDBoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing: 10
+
+        MDLabel:
+            text: 'Usuarios Registrados'
+            halign: 'center'
+            font_style: 'H5'
+
+        ScrollView:
+            MDList:
+                id: lista_usuarios
+
+        MDRaisedButton:
+            text: 'Cerrar Sesión'
+            on_release:
+                app.root.current = 'login'
